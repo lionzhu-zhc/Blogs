@@ -1,2 +1,2 @@
 # 条件随机场
-![](C:\Users\Administrator\Desktop\123.jpeg)
+![](https://github.com/lionzhu6336/Blogs/blob/master/MLA/123.jpeg)
