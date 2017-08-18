@@ -25,4 +25,4 @@
 
 ## Methods:
 >We first construct a very deep fully convolutional residual network, which incorporates multi-scale feature representations, to segment skin lesions. Based on the segmentation results, we employ a very deep residual network to precisely distinguish melanomas from non-melanoma lesions.
-![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/1-1.jpg)
+![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/1-1.PNG)
