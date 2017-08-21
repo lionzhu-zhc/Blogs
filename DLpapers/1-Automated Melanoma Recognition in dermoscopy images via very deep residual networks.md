@@ -27,3 +27,15 @@
 > We first construct a very deep fully convolutional residual network, which incorporates multi-scale feature representations, to segment skin lesions. Based on the segmentation results, we employ a very deep residual network to precisely distinguish melanomas from non-melanoma lesions.
 
 ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/1-1.PNG)
+
+1. DRN: residual net for degradation  and batch normalization for vanishing gradients
+2. FCRN: Fully conv residual network ->multi-scale contextual info
+         corp the original images to compass the lesion (250X250)
+3. seg the lesion first and then classify
+4. avg the results of softmax and SVM to obtain the finals
+
+## Results
+- dataset: Skin Lesion Analysis Towards Melanoma Detection released with ISBI 2016
+- batchsize:4 momentum:0.9 weight decay: 0.0005 lr: 0.001
+- pretrained on ImageNet
+- *50* layers FCRN*8* has the best results
