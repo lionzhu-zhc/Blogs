@@ -1,4 +1,4 @@
-#Deep Neural Network-Based Computer-Assisted Detection of Cerebral Aneurysms in MR Angiography
+# Deep Neural Network-Based Computer-Assisted Detection of Cerebral Aneurysms in MR Angiography
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; J. Magnetic Resonance Imaging 2017.05
 ## Task
 computer-assited detection in cerebral aneurysms  
