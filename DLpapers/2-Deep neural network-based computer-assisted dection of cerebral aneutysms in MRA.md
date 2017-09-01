@@ -19,4 +19,4 @@ utilize the AUC of FROC to determine the hyperparas.
 ## Dis
 employ *MIP* to  represent 3D image as 2D
 
-**results showed that the combination of a CNN and an MIP algorithm can significantly decrease FPs **
+**results showed that the combination of a CNN and an MIP algorithm can significantly decrease FPs**
