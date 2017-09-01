@@ -13,6 +13,8 @@ need low fp rate as well as high sensitivity
 2. train set:300, validation set: 50, test set: 100  
 utilize the AUC of FROC to determine the hyperparas.
 
+![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/2-1.PNG)
+
 ## Results
 70% sensity at 0.26 FPs/case , 89.2s per case
 
