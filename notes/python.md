@@ -7,4 +7,4 @@
 ![1](https://github.com/lionzhu6336/Blogs/raw/master/notes/python_1.PNG)
 def main():  
 if __name__ == "__main__":  
-此处即是main的入口
+ 此处即是main的入口
