@@ -10,7 +10,10 @@
 - Three categories of sparse-view CT recons:
 1. sinogram completion, key idea is to complement the sparse projection before image reconstruction associated with analytical algorithm, such as FBP.
 2. iterative recons: statistical properties of data in projection and prior info, *complicated para tuning* 
-3. post processing: 3D filtering
+3. post processing: 3D filtering  
+
+![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/3-1.PNG)  
+
 ## Method
 ### Method over-view
 1. proposed an architecture: DD-Net
@@ -27,4 +30,4 @@
 - Compared to conventional algorithms that are based on sinogram completion, DD-Net is based in image domain, and it can avoid any new artifacts. This is because any operation in projection domain will influence the global information in image domain. 
 - deconv is a little better than conv
 - shortcut is very useful
--  
+- ​
