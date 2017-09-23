@@ -1,4 +1,4 @@
-# Learned Experts assement-based recons network for sparse-data CT
+# 4 Learned Experts assement-based recons network for sparse-data CT
 ## Introduction
 1. Compressive sensing 压缩感知，突破了Nyquist-Shannon采样定理，可以以低于原始频率2倍的采样率采样并还原
 2. Hu etal  采用total variation作为稀疏转换的正则项，但是TV没法处理blocky artifacts，对其改进有：nonlocal means, tight wavelet frames, dictionary learning, low rank...
@@ -12,3 +12,17 @@
    *x = argminx 0.5(Ax-y)（Ax-y）+ aR(x)*  
    Ax-y是求的L2范数，R(x)是正则项。
 ### LEARN net
+1. 在每次迭代中，x被*循环残差CNN*卷积。
+2. eq.8的第三系通过Conv和RELU实现，其网络结构如下：
+   ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/4-eq8.PNG)
+   ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/4-fig1.PNG)
+3. 整个LEARN网络结构：
+   ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/4-fig2.PNG)
+4. loss fun 是重建的Xt与优质图Xs之间的MSE，用adam优化。一堆计算梯度的公式...
+### Exp and results
+1. 数据集：NIH-AAPM-Mayo clinic low dose CT grand challenge: 5936,512x512 CT images of 10 patients.
+2. 参考图像是用所有2304个投影景FBP得到的优质图像。 下采样的数据被采到了64 或128view
+3. learn 网络用成对的全剂量及采样图像训练，初始输入为FBP结果，三层卷积分别为24@3x3，24@3x3， 1@3x3， 迭代次数50
+4. 量化评估指数：**RMSE, PSNR(peak signal to noise ratio), SSIM(structural similarity index mearsure)**
+5. 对比方法：ASD-POCS, dual dictionary learning, FBP Convnet
+#### visulization-based evaluation
