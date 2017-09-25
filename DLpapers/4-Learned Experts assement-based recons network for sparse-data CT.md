@@ -31,7 +31,7 @@
 1. 64和128view的模型PSNR分别增强了5.7 5.3dB
 2. p <0.05的标准差
 ### trade-off between network and performance
-1. 64 view模型重建最终设定：24@3x3, iteration 50, training samples: 200
+1. 64 view模型重建最终设定：24@3x3, iteration 50, training samples 200
 
-##COnclusion
+## Conclusion
 In our future work, we will further optimize the LEARN network for clinical applications by training the system matrix as well and generalizing the loss function in the GAN framework.
