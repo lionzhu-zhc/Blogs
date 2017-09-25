@@ -13,7 +13,7 @@
    Ax-y是求的L2范数，R(x)是正则项。
 ### LEARN net
 1. 在每次迭代中，x被*循环残差CNN*卷积。
-2. eq.8的第三系通过Conv和RELU实现，其网络结构如下：
+2. eq.8的第三项通过Conv和RELU实现，其网络结构如下：
    ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/4-eq8.PNG)
    ![1](https://github.com/lionzhu6336/Blogs/raw/master/DLpapers/4-fig1.PNG)
 3. 整个LEARN网络结构：
@@ -27,6 +27,7 @@
 5. 对比方法：ASD-POCS, dual dictionary learning, FBP Convnet
 #### visulization-based evaluation
 1. FBPConv 会损失很多细节，原因有三：大量的卷积反卷积会丢失细节；后处理方法依靠大量的训练数据；只使用了投影数据
+2. 块状效应blocky effect
 ### quantitative eval
 1. 64和128view的模型PSNR分别增强了5.7 5.3dB
 2. p <0.05的标准差
