@@ -1,4 +1,4 @@
-# 4 Learned Experts assement-based recons network for sparse-data CT
+# 4-Learned Experts assement-based recons network for sparse-data CT
 ## Introduction
 1. Compressive sensing 压缩感知，突破了Nyquist-Shannon采样定理，可以以低于原始频率2倍的采样率采样并还原
 2. Hu etal  采用total variation作为稀疏转换的正则项，但是TV没法处理blocky artifacts，对其改进有：nonlocal means, tight wavelet frames, dictionary learning, low rank...
@@ -26,3 +26,11 @@
 4. 量化评估指数：**RMSE, PSNR(peak signal to noise ratio), SSIM(structural similarity index mearsure)**
 5. 对比方法：ASD-POCS, dual dictionary learning, FBP Convnet
 #### visulization-based evaluation
+1. FBPConv 会损失很多细节，原因有三：大量的卷积反卷积会丢失细节；后处理方法依靠大量的训练数据；只使用了投影数据
+### quantitative eval
+1. 64和128view的模型PSNR分别增强了5.7 5.3dB
+2. p <0.05的标准差
+### trade-off between network and performance
+1. 64 view模型重建最终设定：24@3x3, iteration 50, training samples:200
+##COnclusion
+In our future work, we will further optimize the LEARN network for clinical applications by training the system matrix as well and generalizing the loss function in the GAN framework.
