@@ -4,9 +4,12 @@
            &emsp;&emsp; np.sort(a, axis = 1) 按列排， 即排完每行由小到大
 
 4. python 文件结构  
-![1](https://github.com/lionzhu6336/Blogs/raw/master/notes/python_1.PNG)  
+   ![1](https://github.com/lionzhu6336/Blogs/raw/master/notes/python_1.PNG)  
 ```
 def main():  
 if __name__ == "__main__":  
  此处即是main的入口
 ```
+5. python  array保存png图像
+
+   ​scipy.misc.toimage(array, cmin=0, cmax =255).save('path')
