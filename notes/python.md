@@ -13,3 +13,4 @@ if __name__ == "__main__":
 5. python  array保存png图像
 
    ​scipy.misc.toimage(array, cmin=0, cmax =255).save('path')
+   数组顺序为 RGB
