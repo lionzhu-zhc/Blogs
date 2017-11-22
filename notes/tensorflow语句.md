@@ -2,7 +2,7 @@
 
    在chrome中转入localhost:6006
 
-2. tensor .get_shape() 得到形状
+2. tensor .get_shape() 得到形状;    type(AA) 得到数据类型
 
 3. conv3d_tranpose(,filters, ...) filter 的shape与conv3d filter shape的inchannels和outchannels顺序相反
 
@@ -12,4 +12,5 @@
 
    ​			tf.reset_default_graph()    # destroy pervious net
 
-   ​			saver.restore(sees, 'path')
+   ​			saver.restore(sees, 'path')  
+6. tfrecords 读出来的batch 需要先np.transpose([0, 2, 1]), 再reshape( 128, 128, 64)
