@@ -6,7 +6,7 @@
 
 3. `conv3d_tranpose(,filters, ...)` filter 的shape与conv3d filter shape的inchannels和outchannels顺序相反
 
-4. sess.run([a, b]) 就是直接返回run的结果，用于查看tensor的值
+4. sess.run([a, b]) 就是直接返回run的结果，类型是ndarr，用于查看tensor的值
 
 5. tf保存模型：  saver.save(sees, 'path', write_meta_graph = False )
 
@@ -21,3 +21,4 @@
 
       `Tf.nn.sparse_softmax_cross_entropy_with_logits()` 比`softmax_cross_entropy_with_logits()`多了一步将*labels* 稀疏化的操作
 
+8. 同一个session里只能用一次 `tf.train.start_queue_runners()` ，且不可以加coordinator
