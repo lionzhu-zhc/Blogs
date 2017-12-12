@@ -8,7 +8,7 @@
 3. Convolution layers can be seen as noise filters in our application, but filtering leads to loss in details. Deconvolution and shortcutting in our model were used for detail preservation
 ### Red CNN
 1. overall structure:
-   ![1](https://github.com/lionzhu-zhc/Blogs/raw/master/DLpapers/5-fig1.PNG)
+   ![1](https://github.com/lionzhu-zhc/Blogs/blob/master/DLpapers/5-fig1.png)
   
 
 ### Exp and results
