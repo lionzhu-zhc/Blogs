@@ -22,3 +22,10 @@
       `Tf.nn.sparse_softmax_cross_entropy_with_logits()` 比`softmax_cross_entropy_with_logits()`多了一步将*labels* 稀疏化的操作
 
 8. 同一个session里只能用一次 `tf.train.start_queue_runners()` ，且不可以加coordinator
+
+9. `func(2, y = 3)` 前面的关键字可以省略，不能前面参数有关键字而后者没有关键字。变量在都有关键字时可以换顺序
+
+10. ​`tf.summary.scalar('name', var)`   
+    `merge_op = tf.summary.merge_all()`   
+    `writer = tf.summary.Filewriter('/dir', sess.graph)`   
+    `writer.add_summary(a,b)`
