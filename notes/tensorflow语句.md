@@ -4,7 +4,7 @@
 
 2. `tensor .get_shape()` 得到形状;    `type(AA)` 得到数据类型
 
-3. `conv3d_tranpose(,filters, ...)` filter 的shape与conv3d filter shape的inchannels和outchannels顺序相反
+3. `conv2d_tranpose(,filters, ...)` filter 也就是卷积核的weights的shape 为[height, width,**out_channels, in_channels**] ,与conv2d filter 的参数顺序[height, width, out_channels,  in_channels]中inchannels和outchannels顺序相反，并且`conv2d_tranpose`还多一个参数：output_shape
 
 4. sess.run([a, b]) 就是直接返回run的结果，类型是ndarr，用于查看tensor的值
 
@@ -26,6 +26,6 @@
 9. `func(2, y = 3)` 前面的关键字可以省略，不能前面参数有关键字而后者没有关键字。变量在都有关键字时可以换顺序
 
 10. ​`tf.summary.scalar('name', var)`   
-    `merge_op = tf.summary.merge_all()`   
-    `writer = tf.summary.Filewriter('/dir', sess.graph)`   
-    `writer.add_summary(a,b)`
+   `merge_op = tf.summary.merge_all()`   
+   `writer = tf.summary.Filewriter('/dir', sess.graph)`   
+   `writer.add_summary(a,b)`
