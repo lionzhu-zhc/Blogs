@@ -26,6 +26,7 @@
 9. `func(2, y = 3)` 前面的关键字可以省略，不能前面参数有关键字而后者没有关键字。变量在都有关键字时可以换顺序
 
 10. ​`tf.summary.scalar('name', var)`   
+	`tf.summary.histogram('h1/weights',w_2)`
    `merge_op = tf.summary.merge_all()`   
    `writer = tf.summary.Filewriter('/dir', sess.graph)`   
-   `writer.add_summary(a,b)`
+   `writer.add_summary(summary_str,itr)` 把迭代步骤绑定到graph中
