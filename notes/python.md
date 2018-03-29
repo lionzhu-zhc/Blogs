@@ -14,3 +14,5 @@ if __name__ == "__main__":
 
    ​scipy.misc.toimage(array, cmin=0, cmax =255).save('path')
    数组顺序为 RGB
+
+6. Spicy.io.loadmat 读数组的顺序是[column, row, slice]
