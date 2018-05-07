@@ -75,5 +75,15 @@ a 的第三层：
 
 表示每个(x,y)坐标对应的channel值最大的那个channel的index，即该点分类的目标类标
 
-13. `tf.shape(tensor)` 返回到结果是[行，列，深]，如果是1维的向量，则只返回[列]的值  
-   `tf.reshape(tensor, (-1,))` 将数组扁平化，变为*1xN*的向量
+13.  `tf.shape(tensor)` 返回到结果是[行，列，深]，如果是1维的向量，则只返回[列]的值  
+    `tf.reshape(tensor, (-1,))` 将数组扁平化，变为*1xN*的向量
+
+14.  TF restore ckpt, 不重复定义网络结构的话，调用  
+
+    ```
+    saver = tf.train.import_meta_graph("save/model.ckpt.meta")
+    with tf.Session() as sess:
+        saver.restore(sess, "save/model.ckpt")
+    ```
+
+    ​
