@@ -80,10 +80,8 @@ a 的第三层：
 
 14.  TF restore ckpt, 不重复定义网络结构的话，调用  
 
-    ```
+    ```python
     saver = tf.train.import_meta_graph("save/model.ckpt.meta")
     with tf.Session() as sess:
         saver.restore(sess, "save/model.ckpt")
     ```
-
-    ​
