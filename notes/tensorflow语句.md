@@ -78,10 +78,9 @@ a 的第三层：
 13.  `tf.shape(tensor)` 返回到结果是[行，列，深]，如果是1维的向量，则只返回[列]的值  
     `tf.reshape(tensor, (-1,))` 将数组扁平化，变为*1xN*的向量
 
-14.  TF restore ckpt, 不重复定义网络结构的话，调用  
-
-    ```python
+14.  TF restore ckpt, 不重复定义网络结构的话，调用
+```python
     saver = tf.train.import_meta_graph("save/model.ckpt.meta")
     with tf.Session() as sess:
         saver.restore(sess, "save/model.ckpt")
-    ```
+```
