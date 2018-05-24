@@ -101,3 +101,35 @@ with tf.Session(graph=g2) as sess2:
     print(sess2.run(c2)) 
 ``` 
 结果为 4.0， 20.0
+
+
+16. 打印tf的变量名和变量值 tf.all_variables() , tensor 中有属性.name， run一下得到values
+```python
+variable_names = [v.name for v in tf.trainable_variables()]
+values = sess.run(variable_names)
+for k,v in zip(variable_names, values):
+    print("Variable: ", k)
+    print("Shape: ", v.shape)
+    print(v)
+```
+17. tf fine-tuning
+```python
+saver = tf.train.import_meta_graph('vgg.meta')
+# 访问图
+graph = tf.get_default_graph() 
+
+#访问用于fine-tuning的output
+fc7= graph.get_tensor_by_name('fc7:0')
+
+#如果你想修改最后一层梯度，需要如下
+fc7 = tf.stop_gradient(fc7) # It's an identity function
+fc7_shape= fc7.get_shape().as_list()
+
+new_outputs=2
+weights = tf.Variable(tf.truncated_normal([fc7_shape[3], num_outputs], stddev=0.05))
+biases = tf.Variable(tf.constant(0.05, shape=[num_outputs]))
+output = tf.matmul(fc7, weights) + biases
+pred = tf.nn.softmax(output)
+
+# Now, you run this with fine-tuning data in sess.run()
+```
