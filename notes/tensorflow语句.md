@@ -84,3 +84,20 @@ a 的第三层：
     with tf.Session() as sess:
         saver.restore(sess, "save/model.ckpt")
 ```
+
+15.  tf graph 的用法  
+```python
+g1 = tf.Graph()  
+with g1.as_default():  
+    c1 = tf.constant(4.0)  
+  
+g2 = tf.Graph()  
+with g2.as_default():  
+    c2 = tf.constant(20.0)  
+  
+with tf.Session(graph=g1) as sess1:  
+    print(sess1.run(c1))  
+with tf.Session(graph=g2) as sess2:  
+    print(sess2.run(c2)) 
+``` 
+结果为 4.0， 20.0
