@@ -22,6 +22,7 @@
       它先对logits做softmax，再对softmax结果做cross_entropy   
 
       `Tf.nn.sparse_softmax_cross_entropy_with_logits()` 比`softmax_cross_entropy_with_logits()`多了一步将*labels* 稀疏化的操作
+      `tf.losses.sparse_softmax_cross_entropy` logits的shape为[batch,depth,width,height,channel]， 而label的shape为[batch,depth,width,height]，**比logits少了channel维度**
 
 8. 同一个session里只能用一次 `tf.train.start_queue_runners()` ，且不可以加coordinator
 
