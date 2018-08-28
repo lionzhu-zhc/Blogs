@@ -16,5 +16,5 @@ if __name__ == "__main__":
    数组顺序为 RGB
 
 6. Spicy.io.loadmat 读数组的顺序是[column, row, slice]
-7. `p.full((3,4), 10)` 创建3x4矩阵，初始值为10
+7. `np.full((3,4), 10)` 创建3x4矩阵，初始值为10
 8. `cord = np.where(data==0)` 查找data中为0的位置，`data[cord[0], cord[1]] = 1` 替换成1
