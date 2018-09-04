@@ -18,3 +18,10 @@ if __name__ == "__main__":
 6. Spicy.io.loadmat 读数组的顺序是[column, row, slice]
 7. `np.full((3,4), 10)` 创建3x4矩阵，初始值为10
 8. `cord = np.where(data==0)` 查找data中为0的位置，`data[cord[0], cord[1]] = 1` 替换成1
+9. 将0-1矩阵保存成图像显示   
+```
+from PIL import Image
+im = Image.fromarray(np.uint8(seg * 255))
+im.show()
+im.save('aa.png')
+```
