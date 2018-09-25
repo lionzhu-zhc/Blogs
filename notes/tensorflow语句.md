@@ -10,7 +10,7 @@
 
 5. tf保存模型：
    ``` python
-    saver.save(sees, &#39;path&#39;, write_meta_graph = False )
+    saver.save(sees, ..., write_meta_graph = False )
 
     tf.reset_default_graph()    # destroy pervious net
 
@@ -100,7 +100,7 @@ with tf.Session(graph=g1) as sess1:
     print(sess1.run(c1))  
 with tf.Session(graph=g2) as sess2:  
     print(sess2.run(c2)) 
-``` 
+```
 结果为 4.0， 20.0
 
 
@@ -134,3 +134,6 @@ pred = tf.nn.softmax(output)
 
 # Now, you run this with fine-tuning data in sess.run()
 ```
+18. `tf.Variable()` 每次都会创建新的变量，无法共享变量   
+    `tf.get_variable()` 结合作用域可知若指定的变量名已存在则返回存在的变量，否则新建变量
+19. `tensor.get_shape().as_list()[-1]` 取tensor的最后一维大小，可直接得到，不需要`sess.run()`
