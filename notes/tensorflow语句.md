@@ -134,6 +134,9 @@ pred = tf.nn.softmax(output)
 
 # Now, you run this with fine-tuning data in sess.run()
 ```
+> https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/5-16-transfer-learning/
+> https://zhuanlan.zhihu.com/p/44904619
+***
 18. `tf.Variable()` 每次都会创建新的变量，无法共享变量   
     `tf.get_variable()` 结合作用域可知若指定的变量名已存在则返回存在的变量，否则新建变量
 19. `tensor.get_shape().as_list()[-1]` 取tensor的最后一维大小，可直接得到，不需要`sess.run()`
