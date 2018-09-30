@@ -140,6 +140,31 @@ pred = tf.nn.softmax(output)
 ***
 18. `tf.Variable()` 每次都会创建新的变量，无法共享变量   
     `tf.get_variable()` 结合作用域可知若指定的变量名已存在则返回存在的变量，否则新建变量
+
 19. `tensor.get_shape().as_list()[-1]` 取tensor的最后一维大小，可直接得到，不需要`sess.run()`   
     `b= tf.shape(tensor)` 返回的是一个tensor，需要sess.run(b)得到ndarray
+
 20. `tf.nn.softmax(Tensor)` 返回跟Tensor一样shape的tensor，其值为根据原Tensor各channel值计算得到的概率值
+
+21. 旧版查看ckpt的模型的变量：   
+```
+from tensorflow.python.tools.inspect_checkpoint import  print_tensors_in_checkpoint_file
+print_tensors_in_checkpoint_file('.../model.ckpt', tensor_name= None, all_tensors= False, all_tensor_names= True)
+文件目录有model.ckpt.index等
+```
+新版ckpt   
+```
+print_tensors_in_checkpoint_file('.../name', tensor_name= None, all_tensors= False, all_tensor_names= True)
+文件只有name.index等
+```
+
+22. 根据名字加载ckpt变量
+```
+#得到该网络中，所有可以加载的参数   
+variables = tf.contrib.framework.get_variables_to_restore()   
+#删除output层中的参数   
+variables_to_resotre = [v for v in varialbes if v.name.split('/')[0]!='output']   
+#构建这部分参数的saver   
+saver = tf.train.Saver(variables_to_restore)saver.restore(sess,'model.ckpt')
+```
+>https://blog.csdn.net/b876144622/article/details/79962727?utm_source=copy
