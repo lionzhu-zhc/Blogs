@@ -85,6 +85,7 @@ a 的第三层：
     with tf.Session() as sess:
         saver.restore(sess, "save/model.ckpt")
 ```
+ckpt的目录中，*meta*是模型图结构，*index*是参数索引，*data*是数据。一般model-1000.ckpt会自动加上迭代次数
 
 15.  tf graph 的用法  
 ```python
