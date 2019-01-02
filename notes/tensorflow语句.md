@@ -168,3 +168,9 @@ variables_to_resotre = [v for v in varialbes if v.name.split('/')[0]!='output']
 saver = tf.train.Saver(variables_to_restore)saver.restore(sess,'model.ckpt')
 ```
 >https://blog.csdn.net/b876144622/article/details/79962727?utm_source=copy
+
+23. tf.variable_scope可以让变量有相同的命名，包括tf.get_variable得到的变量，还有tf.Variable的变量   
+
+tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变量
+>https://blog.csdn.net/UESTC_C2_403/article/details/72328815
+
