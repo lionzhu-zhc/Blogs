@@ -141,8 +141,8 @@ pred = tf.nn.softmax(output)
 18. `tf.Variable()` 每次都会创建新的变量，无法共享变量   
     `tf.get_variable()` 结合作用域可知若指定的变量名已存在则返回存在的变量，否则新建变量
 
-19. `tensor.get_shape().as_list()[-1]` 取tensor的最后一维大小，可直接得到，不需要`sess.run()`, `get_shape()`得到的是tensor的tuple类型  
-    `b= tf.shape(a)` 返回的是一个tensor，需要sess.run(b)得到ndarray, 其中a可以是*tensor, list, array*
+19. `tensor.get_shape().as_list()[-1]` 取tensor的最后一维大小，可直接得到，不需要`sess.run()`, `get_shape()`得到的是tensor的tuple类型,是静态维度，用于placehoder都是固定的情况  
+    `b= tf.shape(a)` 返回的是一个tensor，需要sess.run(b)得到ndarray, 其中a可以是*tensor, list, array*，得到动态维度，可用于[none, none, 1]这种情况
 
 20. `tf.nn.softmax(Tensor)` 返回跟Tensor一样shape的tensor，其值为根据原Tensor各channel值计算得到的概率值
 
@@ -172,5 +172,5 @@ saver = tf.train.Saver(variables_to_restore)saver.restore(sess,'model.ckpt')
 23. tf.variable_scope可以让变量有相同的命名，包括tf.get_variable得到的变量，还有tf.Variable的变量   
 
 tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变量
->https://blog.csdn.net/UESTC_C2_403/article/details/72328815
+>https://blog.csdn.net/UESTC_C2_403/article/details/72328815 
 
