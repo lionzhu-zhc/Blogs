@@ -6,3 +6,6 @@
     model.to(device)
     ```
     这是把模型和数据都送进gpu加速训练
+3.  `optimizer.zero_grad()` 当不把每次的梯度设为0时，梯度会叠加，相当于增大了batchsize   
+	zero_grad 是将所有Variable的梯度清0，*不是weights*
+4. 
