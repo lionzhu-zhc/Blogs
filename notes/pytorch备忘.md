@@ -10,3 +10,18 @@
 	zero_grad 是将所有Variable的梯度清0，*不是weights*
 4.  pytorch反向传播的计算例子，很详细：   
     > https://zhuanlan.zhihu.com/p/36294441
+5.  `nn.Xxx`封装性更高，不需要手动设置weights bias   
+	`nn.functional.Xxx` 需要手动设置w,b，且不能用在`nn.Sequential()`里面   
+	建议通常情况下使用类，特殊需要使用`functional`
+6.  `torch.max(output, 1)[1]`   
+	max返回的是[max_probability, index]，1 是沿的轴向
+	[1] 指的是取返回list的第二项，即index也就是label   
+7.  `x.cuda()` 将Tensor x放到GPU上   
+	`var.data.cpu().numpy()` 网络的变量需要先移动到cpu才能变成numpy，否则出错。
+	或者如下：   
+	```
+	device = torch.device("cuda" if use_cuda else "cpu")
+	model = MyRNN().to(device)
+	```
+
+8.  `x.requires_grad_()` 可以将tensor x的梯度属性设为True
