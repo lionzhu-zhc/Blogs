@@ -25,3 +25,20 @@
 	```
 
 8.  `x.requires_grad_()` 可以将tensor x的梯度属性设为True
+9.  ``` 
+	class net(nn.Module):
+		def __init__(self, in_channel, out_channel):
+        	super(net, self).__init__()
+	```
+	指的是子类net调用了父类nn.Module的初始化方法
+10. 可微IOU loss:
+	```
+	def iou_continuous_loss(y_pred, y_true):
+    eps = 1e-6
+    def _sum(x):
+    	return x.sum(-1).sum(-1)
+    	numerator = (_sum(y_true * y_pred) + eps)
+    	denominator = (_sum(y_true ** 2) + _sum(y_pred ** 2)
+                  	  - _sum(y_true * y_pred) + eps)
+    	return (numerator / denominator).mean()
+    ```
