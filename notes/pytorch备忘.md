@@ -34,11 +34,11 @@
 10. 可微IOU loss:
 	```
 	def iou_continuous_loss(y_pred, y_true):
-    eps = 1e-6
-    def _sum(x):
-    	return x.sum(-1).sum(-1)
+    	eps = 1e-6
+    	def _sum(x):
+    		return x.sum(-1).sum(-1)
     	numerator = (_sum(y_true * y_pred) + eps)
     	denominator = (_sum(y_true ** 2) + _sum(y_pred ** 2)
                   	  - _sum(y_true * y_pred) + eps)
-    	return (numerator / denominator).mean()
+    	return 1 - (numerator / denominator).mean()
     ```
