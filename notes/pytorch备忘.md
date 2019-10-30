@@ -42,3 +42,9 @@
                   	  - _sum(y_true * y_pred) + eps)
     	return 1 - (numerator / denominator).mean()
     ```
+11. `nn.AdaptiveMaxPool2d(output_size)`   
+	output_size 是pool后的大小，函数会自动计算池化的stride和kernel_size
+12. `nn.Conv2d()`和`nn.functional.conv2d()` 中的 *dilation*, =2表示卷积点中间隔一个点。
+13. `nn.ConvTranspose2d()` 对于每一条边输出的尺寸：   
+	output = (input-1)*stride + output_padding -2*padding + kernel_size   
+	Unet中的使用：`self.up = nn.ConvTranspose2d(in_channels // 2, in_channels // 2, kernel_size=2, stride=2)`
