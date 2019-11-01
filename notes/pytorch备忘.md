@@ -48,3 +48,5 @@
 13. `nn.ConvTranspose2d()` 对于每一条边输出的尺寸：   
 	output = (input-1)*stride + output_padding -2*padding + kernel_size   
 	Unet中的使用：`self.up = nn.ConvTranspose2d(in_channels // 2, in_channels // 2, kernel_size=2, stride=2)`
+14. `nn.Conv2d()` 带有dilation的输出尺寸为： `O = (H + 2*P - D*(F-1) -1)/S +1`   
+	对于F=3的卷积核，Dilation与Padding一样才能保证SAME。
