@@ -50,3 +50,6 @@
 	Unet中的使用：`self.up = nn.ConvTranspose2d(in_channels // 2, in_channels // 2, kernel_size=2, stride=2)`
 14. `nn.Conv2d()` 带有dilation的输出尺寸为： `O = (H + 2*P - D*(F-1) -1)/S +1`   
 	对于F=3的卷积核，Dilation与Padding一样才能保证SAME。
+15. `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，不需要onehot.   
+	`BCEWithLogitsLoss` 等于 `sigmoid() + BCELoss()`  
+	`CrossEntropyLoss` 等于 `LogSoftmax() + NLLLoss`
