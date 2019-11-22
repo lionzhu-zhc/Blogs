@@ -50,8 +50,9 @@
 	Unet中的使用：`self.up = nn.ConvTranspose2d(in_channels // 2, in_channels // 2, kernel_size=2, stride=2)`
 14. `nn.Conv2d()` 带有dilation的输出尺寸为： `O = (H + 2*P - D*(F-1) -1)/S +1`   
 	对于F=3的卷积核，Dilation与Padding一样才能保证SAME。
-15. `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，不需要onehot.   
-	`BCEWithLogitsLoss` 等于 `sigmoid() + BCELoss()`
-	`BCELoss()`需要加上`sigmoid 或 softmax`， 需要onehot  
-	`CrossEntropyLoss` 等于 `LogSoftmax() + NLLLoss`
+15. `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，*不需要onehot*.   
+	`CrossEntropyLoss` 等于 `LogSoftmax() + NLLLoss`, **weights**的形状为[C] . 
+	`BCELoss()`需要加上`sigmoid 或 softmax`，input为NxCxHxW,targe为NxCxHxW *需要onehot* , weight形状[nbatch]
+	`BCEWithLogitsLoss` 等于 `sigmoid() + BCELoss()`. **pos_weight**尺寸为[1]
+	
 16. `save(model)`要比`save(model.state_dict())`好很多
