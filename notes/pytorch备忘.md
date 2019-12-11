@@ -9,6 +9,7 @@
 3.  `optimizer.zero_grad()` 当不把每次的梯度设为0时，梯度会叠加，相当于增大了batchsize   
 	zero_grad 是将所有Variable的梯度清0，*不是weights*
 4.  pytorch反向传播的计算例子，很详细：   
+    
     > https://zhuanlan.zhihu.com/p/36294441
 5.  `nn.Xxx`封装性更高，不需要手动设置weights bias   
 	`nn.functional.Xxx` 需要手动设置w,b，且不能用在`nn.Sequential()`里面   
@@ -50,7 +51,7 @@
 	Unet中的使用：`self.up = nn.ConvTranspose2d(in_channels // 2, in_channels // 2, kernel_size=2, stride=2)`
 14. `nn.Conv2d()` 带有dilation的输出尺寸为： `O = (H + 2*P - D*(F-1) -1)/S +1`   
 	对于F=3的卷积核，Dilation与Padding一样才能保证SAME。
-15. `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，*不需要onehot*.   
+15. `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，*不需要onehot*. 需要**long()**类型   
 	`CrossEntropyLoss` 等于 `LogSoftmax() + NLLLoss`, **weights**的形状为[C] .    
 	`BCELoss()`需要加上`sigmoid 或 softmax`，input为NxCxHxW,targe为NxCxHxW *需要onehot* , weight形状[nbatch]   
 	`BCEWithLogitsLoss` 等于 `sigmoid() + BCELoss()`. **pos_weight**尺寸为[1]
