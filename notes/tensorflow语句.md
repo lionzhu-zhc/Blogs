@@ -28,11 +28,11 @@
 
 9. `func(2, y = 3)` 前面的关键字可以省略，不能前面参数有关键字而后者没有关键字。变量在都有关键字时可以换顺序
 
-10. ​`tf.summary.scalar('name', var)`   
-   `tf.summary.histogram('h1/weights',w_2)`
-   `merge_op = tf.summary.merge_all()`   
-   `writer = tf.summary.Filewriter('/dir', sess.graph)`   
-   `writer.add_summary(summary_str,itr)` 把迭代步骤绑定到graph中
+10. `tf.summary.scalar('name', var)`   
+      `tf.summary.histogram('h1/weights',w_2)`
+      `merge_op = tf.summary.merge_all()`   
+      `writer = tf.summary.Filewriter('/dir', sess.graph)`   
+      `writer.add_summary(summary_str,itr)` 把迭代步骤绑定到graph中
    > https://zhuanlan.zhihu.com/p/26203726  
 
 11.  numpy 读取的raw行列相反，语句为：由此得到 [512, 512, 8]
@@ -174,3 +174,16 @@ saver = tf.train.Saver(variables_to_restore)saver.restore(sess,'model.ckpt')
 tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变量
 >https://blog.csdn.net/UESTC_C2_403/article/details/72328815 
 
+24. `Tensor=tf.nn.softmax_cross_entropy_with_logits(logits= Network.out, labels= Labels_onehot)`   
+   上面是softmax交叉熵loss，参数为网络最后一层的输出和onehot形式的标签。不需要经过softmax
+25. `Tensor=tf.nn.sparse_softmax_cross_entropy_with_logits (logits=Network.out, labels= Labels)`   
+   labels参数应该是没有经过onehot的标签, 加了sparse的loss还有一个特性就是标签可以出现-1，如果标签是-1代表这个数据不再进行梯度回传。   
+26. `Tensor=tf.nn. sigmoid_cross_entropy_with_logits (logits= Network.out, labels= Labels_onehot)`   
+   先进行sigmoid   
+27. `Tensor=tf.nn.weighted_cross_entropy_with_logits (logits=Network.out, labels=Labels_onehot, pos_weight=decimal_number`   
+   pos_weight函数可以适当的增大或者缩小正样本的loss   
+28. Network.out : 网络最后一层的输出，注意是没有经过softmax的网络的输出，通常是softmax函数的输入值。   
+   Network.probs : 网络输出的概率结果，通常为网络最后一层输出经过softmax函数之后的结果，Network.probs=tf.nn.softmax(Network.out)   
+   Network.pred : 网络的预测结果，在onehot的形式中选择概率最大的一类作为最终的预测结果，Network.pred=tf.argmax(Network.probs
+, axis=n)   
+>https://blog.csdn.net/limiyudianzi/article/details/80693695
