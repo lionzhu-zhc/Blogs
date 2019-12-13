@@ -167,12 +167,12 @@ variables_to_resotre = [v for v in varialbes if v.name.split('/')[0]!='output']
 #构建这部分参数的saver   
 saver = tf.train.Saver(variables_to_restore)saver.restore(sess,'model.ckpt')
 ```
->https://blog.csdn.net/b876144622/article/details/79962727?utm_source=copy
+   >https://blog.csdn.net/b876144622/article/details/79962727?utm_source=copy
 
 23. tf.variable_scope可以让变量有相同的命名，包括tf.get_variable得到的变量，还有tf.Variable的变量   
 
-tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变量
->https://blog.csdn.net/UESTC_C2_403/article/details/72328815 
+   tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变量
+   >https://blog.csdn.net/UESTC_C2_403/article/details/72328815 
 
 24. `Tensor=tf.nn.softmax_cross_entropy_with_logits(logits= Network.out, labels= Labels_onehot)`   
    上面是softmax交叉熵loss，参数为网络最后一层的输出和onehot形式的标签。不需要经过softmax
@@ -185,5 +185,5 @@ tf.name_scope可以让变量有相同的命名，只是限于tf.Variable的变�
 28. Network.out : 网络最后一层的输出，注意是没有经过softmax的网络的输出，通常是softmax函数的输入值。   
    Network.probs : 网络输出的概率结果，通常为网络最后一层输出经过softmax函数之后的结果，Network.probs=tf.nn.softmax(Network.out)   
    Network.pred : 网络的预测结果，在onehot的形式中选择概率最大的一类作为最终的预测结果，Network.pred=tf.argmax(Network.probs
-, axis=n)   
->https://blog.csdn.net/limiyudianzi/article/details/80693695
+   , axis=n)   
+   >https://blog.csdn.net/limiyudianzi/article/details/80693695
