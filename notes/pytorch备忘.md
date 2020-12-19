@@ -65,7 +65,7 @@
     对于F=3的卷积核，Dilation与Padding一样才能保证SAME。
     
 15.  `F.cross_entropy(input,target)`,其中input为NxCxHxW,而targe为NxHxW，*不需要onehot*. 需要**long()**类型   
-    `CrossEntropyLoss` 等于 `LogSoftmax() + NLLLoss`, **weights**的形状为[C] .    
+    `CrossEntropyLoss = Log + Softmax() + NLLLoss`, **weights**的形状为[C] .    
     `BCELoss()`需要加上`sigmoid 或 softmax`，input为NxCxHxW,targe为NxCxHxW *需要onehot* , weight形状[nbatch]   
     `BCEWithLogitsLoss` 等于 `sigmoid() + BCELoss()`. **pos_weight**尺寸为[1]
 
@@ -74,4 +74,7 @@
 17. `with torch.no_grad():`用在inference中，节约内存
 
 18. `grad_fn`表示该tensor是否是一个计算结果， `requires_grad` 表示是否要计算该tensor的梯度，默认false，**在网络训练中，输入的requires_grad 都是false，由于网络中间运算节点为True，因此最后的输出就自动求导了**。 `leaf variable`一般指事先创建的tensor
+
 19. `tensor_A = tensor_B`， 把B赋值给A，A大小变了也会导致B边，它们指向同一块内存。可以用A=B+0，新建一块A
+
+20. conv 和pooling在减小一般分辨率的时候一般 `kernel=3` --> `padding=1`, `kernel = 5` --> `padding=2`
