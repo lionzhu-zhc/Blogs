@@ -77,4 +77,6 @@
 
 19. `tensor_A = tensor_B`， 把B赋值给A，A大小变了也会导致B边，它们指向同一块内存。可以用A=B+0，新建一块A
 
-20. conv 和pooling在减小一般分辨率的时候一般 `kernel=3` --> `padding=1`, `kernel = 5` --> `padding=2`
+20. conv 和pooling在减小一般分辨率的时候一般设置为： `kernel=3` --> `padding=1`或 `kernel = 5` --> `padding=2`
+21. `a.reshape(3,4)`可以不是contiguous的，相当于`a.contiguous()` + `a.view(3,4)`，`b.view(3,4)`则必须是contiguous的
+22. `x.tranpose(0,1)`一次只能转换两个维度，`x.permute(1,2,0)`则可以用到高维上。它们的结果都是不contiguous的
