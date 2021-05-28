@@ -79,4 +79,24 @@
 
 20. conv 和pooling在减小一般分辨率的时候一般设置为： `kernel=3` --> `padding=1`或 `kernel = 5` --> `padding=2`
 21. `a.reshape(3,4)`可以不是contiguous的，相当于`a.contiguous()` + `a.view(3,4)`，`b.view(3,4)`则必须是contiguous的
-22. `x.tranpose(0,1)`一次只能转换两个维度，`x.permute(1,2,0)`则可以用到高维上。它们的结果都是不contiguous的
+22. x.tranpose(0,1)一次只能转换两个维度，x.permute(1,2,0)则可以用到高维上。它们的结果都是不contiguous的
+23. `output = F.unfold(input, k_size) ` input是四维(Bs,C,H,W), k_size为滑动窗大小，output输出三维形状(Bs, len, num),其中len=C * k_size_w * k_size_h，输出特征的长度等于通道数x滑动窗长x宽，输出特征的个数num等于滑动窗在input平面上一共滑动了多少次。得到output后需要reshape一下才能得到分割开的tensor `data.view(Bs,num, C, ks_H, ks_w)`
+一个1x1x5x5的特征图
+ `[[[[  1,  2,  3,  4,  5],
+      [  6,  7,  8,  9, 10],
+      [ 11, 12, 13, 14, 15],
+      [ 16, 17, 18, 19, 20],
+      [ 21, 22, 23, 24, 25]]]]`
+      `F.unfold(x, (2, 2)) ` 使用2x2的滑动过程：
+      `1 2  ->  2 3  ->  3 4
+		6 7      7 8      8 9  ...`
+	最后的结果是1x4x16的矩阵：
+	`[[[ 1,  2,  3,  4,  6,  7,  8,  9, 11, 12, 13, 14, 16, 17, 18, 19],
+         [ 2,  3,  4,  5,  7,  8,  9, 10, 12, 13, 14, 15, 17, 18, 19, 20],
+         [ 6,  7,  8,  9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 24],
+         [ 7,  8,  9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25]]]`
+ > https://blog.csdn.net/qq_40714949/article/details/112836897
+ > https://blog.csdn.net/qq_34914551/article/details/102940368
+
+
+24. pytorch中`Conv2d()`的输入为(N,C, H,W), 而`Linear()`的输入为(N,H,W,C)，C的位置不一样
